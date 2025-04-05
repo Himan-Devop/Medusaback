@@ -2,7 +2,7 @@ name: Deploy Medusa to ECS
 
 on:
   push:
-    branches: [develop]
+    branches: [main]
 
 jobs:
   deploy:

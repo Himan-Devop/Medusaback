@@ -30,11 +30,11 @@ jobs:
 
       - name: Tag image for ECR
         run: |
-          docker tag medusa-backend:latest ${{ secrets.ECR_REGISTRY }}/medusa-backend:latest
+          docker tag medusa-backend:latest ${{ secrets.ECR_REGISTRY }} medusa-backend:latest
 
       - name: Push to ECR
         run: |
-          docker push ${{ secrets.ECR_REGISTRY }}/medusa-backend:latest
+          docker push ${{ secrets.ECR_REGISTRY }} medusa-backend:latest
 
       - name: Force ECS service update
         run: |

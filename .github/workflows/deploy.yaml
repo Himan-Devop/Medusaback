@@ -24,9 +24,13 @@ jobs:
         run: |
           aws ecr get-login-password | docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}
 
-      - name: Build Docker image with ECR tag
+      - name: Build Docker image
         run: |
-          docker build --platform linux/amd64 -t ${{ secrets.ECR_REGISTRY }}/medusa-backend:latest .
+          docker build --platform linux/amd64 -t medusa-backend:latest .
+
+      - name: Tag image for ECR
+        run: |
+          docker tag medusa-backend:latest ${{ secrets.ECR_REGISTRY }}/medusa-backend:latest
 
       - name: Push Docker image to Amazon ECR
         run: |
